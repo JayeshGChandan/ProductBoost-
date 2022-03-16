@@ -40,10 +40,6 @@
     </div>
 </div>
 <br>
-<div class="row">
-<div class="col-10"></div>
-    <div class="col-2"><a href="#">Reply</a></div>
-</div>
 
 <form  id="upvote"  method="POST" action="{% url 'upvote' product.id%}">
     {% csrf_token %}

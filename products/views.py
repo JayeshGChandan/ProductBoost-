@@ -61,16 +61,3 @@ def upvote(request, product_id):
         else:
             print("Object already there")
         return redirect('/products/' + str(product.id))
-
-# @login_required(login_url="/accounts/signup")
-# def reply(request, product_id, rv_id):
-#     if request.method == 'POST':
-#         review = get_object_or_404(Review, pk=rv_id)
-#         new_review = Review()
-#         new_review.field_id = uuid.uuid4()
-#         new_review.parent_id = review.field_id
-#         new_review.body = request.POST['body']
-#         new_review.save()
-#         return redirect('/products/' + str(product_id))
-#     else:
-#         return render(request, 'products/reviewBody.html')
