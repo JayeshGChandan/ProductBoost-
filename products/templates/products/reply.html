@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form method="POST" action="{% url 'reply' product.id %}">
+
+    {% csrf_token %}
+    <h3>Enter reply text body here:</h3>
+    <br>
+    <input type="text" name="val">
+    <br><br>
+    <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+{% endblock %}

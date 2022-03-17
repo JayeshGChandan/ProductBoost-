@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Product, Vote
+from .models import Product, Vote, Reply
 
 
 # Create your views here.
@@ -43,8 +43,8 @@ def detail(request, product_id):
 
 @login_required(login_url="/accounts/signup")
 def upvote(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
-        product = get_object_or_404(Product, pk=product_id)
         # vote = get_object_or_404(Vote, voter=User, product=product)
         # if not vote:
         product_name = Product.title
@@ -60,4 +60,17 @@ def upvote(request, product_id):
             vote.save()
         else:
             print("Object already there")
+    return redirect('/products/' + str(product.id))
+
+
+@login_required(login_url="/accounts/signup")
+def reply(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        replyObj = Reply()
+        replyObj.body = request.POST.get('val', False)
+        replyObj.forProduct = product
+        replyObj.save()
         return redirect('/products/' + str(product.id))
+    else:
+        return render(request, 'products/reply.html', {'product': product})

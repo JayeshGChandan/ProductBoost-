@@ -27,3 +27,7 @@ class Vote(models.Model):
     voter = models.ForeignKey(User, on_delete=None)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+
+class Reply(models.Model):
+    forProduct = models.ForeignKey(Product, on_delete=None)
+    body = models.TextField()

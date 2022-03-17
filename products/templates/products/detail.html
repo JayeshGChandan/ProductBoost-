@@ -41,6 +41,8 @@
 </div>
 <br>
 
+<a href="{% url 'reply' product.id%}">Reply</a>
+
 <form  id="upvote"  method="POST" action="{% url 'upvote' product.id%}">
     {% csrf_token %}
     <input type="hidden">
