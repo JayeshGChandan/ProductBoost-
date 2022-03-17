@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Product of the year</h3>
+    <div class="row pt-3 ">
+        <div class="col-2" onclick="window.location='{% url 'detail' product1.id %}';" style="cursor: pointer;">
+            <img src="{{ product1.icon.url }}" class="img-fluid">
+        </div>
+        <div class="col-6" onclick="window.location='{% url 'detail' product1.id %}';" style="cursor: pointer;">
+            <h1>{{ product1.title }}</h1>
+            <p>{{ product1.summary }}</p>
+        </div>
+    </div>
+    <br>
+    <h3>Product of the month</h3>
+    <div class="row pt-3 ">
+        <div class="col-2" onclick="window.location='{% url 'detail' product2.id %}';" style="cursor: pointer;">
+            <img src="{{ product2.icon.url }}" class="img-fluid">
+        </div>
+        <div class="col-6" onclick="window.location='{% url 'detail' product2.id %}';" style="cursor: pointer;">
+            <h1>{{ product2.title }}</h1>
+            <p>{{ product2.summary }}</p>
+        </div>
+    </div>
+    <br>
+    <h3>Product of the week</h3>
+    <div class="row pt-3 ">
+        <div class="col-2" onclick="window.location='{% url 'detail' product3.id %}';" style="cursor: pointer;">
+            <img src="{{ product3.icon.url }}" class="img-fluid">
+        </div>
+        <div class="col-6" onclick="window.location='{% url 'detail' product3.id %}';" style="cursor: pointer;">
+            <h1>{{ product3.title }}</h1>
+            <p>{{ product3.summary }}</p>
+        </div>
+    </div>
+
+{% endblock %}

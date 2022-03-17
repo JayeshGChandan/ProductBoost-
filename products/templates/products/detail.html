@@ -40,8 +40,18 @@
     </div>
 </div>
 <br>
-
-<a href="{% url 'reply' product.id%}">Reply</a>
+<br>
+<h5 class="font-bold text-center">Comments</h5>
+{% for reply in replies.all %}
+    <div class="col-sm-12 text-end fst-italic">
+        <p>{{ reply.body }}</p>
+    </div>
+    <hr>
+{% endfor %}
+<br>
+<div class="col-sm-12 text-end">
+    <a href="{% url 'reply' product.id%}"><button class="btn btn-warning btn-sm btn-block">Add Reply</button></a>
+</div>
 
 <form  id="upvote"  method="POST" action="{% url 'upvote' product.id%}">
     {% csrf_token %}

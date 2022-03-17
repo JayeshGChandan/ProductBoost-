@@ -38,7 +38,14 @@ def create(request):
 
 def detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    return render(request, 'products/detail.html', {'product': product})
+    replies = Reply.objects.filter(forProduct=product)
+
+    return render(request, 'products/detail.html', {'product': product, 'replies': replies})
+
+
+def top(request):
+    products = Product.objects.all().order_by('votes_total').reverse()[:3]
+    return render(request, 'products/top.html', {'product1': products[0], 'product2': products[1], 'product3': products[2]})
 
 
 @login_required(login_url="/accounts/signup")
