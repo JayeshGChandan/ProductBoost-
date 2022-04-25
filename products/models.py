@@ -11,7 +11,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images/')
     icon = models.ImageField(upload_to='images/')
     body = models.TextField()
-    hunter = models.ForeignKey(User, on_delete=models.CASCADE)
+    hunter = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.title
